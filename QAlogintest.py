@@ -27,7 +27,7 @@ try:
     )
 finally:
     driver.find_element_by_id("user_email").send_keys("anggreiniintn@gmail.com")
-    driver.find_element_by_id("user_password").send_keys("k9UWNtpPafSu")
+    driver.find_element_by_id("user_password").send_keys("")
     driver.find_element_by_name("commit").click()
     
 
