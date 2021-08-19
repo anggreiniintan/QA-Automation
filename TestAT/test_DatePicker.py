@@ -27,8 +27,9 @@ class TestDatepicker():
         selected_to_year=Select(select_year)
         selected_to_year.select_by_visible_text("2021")
 
-        select_date = self.driver.find_element_by_css_selector("react-datepicker__day react-datepicker__day--018 react-datepicker__day--selected react-datepicker__day--today")
+        select_date = self.driver.find_element_by_xpath("//*[@id='datePickerMonthYear']/div[2]/div[2]/div/div/div[2]/div[2]/div[3]/div[5]")
         select_date.click()
+
 
         
         
