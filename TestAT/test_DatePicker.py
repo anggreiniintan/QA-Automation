@@ -62,6 +62,10 @@ class TestDatepicker():
                 i.click()
                 break   
 
+        value_datepicker = self.driver.find_element_by_id("datePickerMonthYearInput")
+        value = value_datepicker.get_attribute("value")
+
+        assert value == "02/24/2021"
 
         
         
