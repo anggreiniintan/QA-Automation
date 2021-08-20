@@ -86,4 +86,3 @@ class TestDatepicker():
         
         assert select_date_column.get_attribute("value") == "February 28, 2021 7:30 AM"
 
-        

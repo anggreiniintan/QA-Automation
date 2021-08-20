@@ -47,10 +47,18 @@ class LoginPage():
 
     def email_null(self):
         email_inputNull = self.driver.find_element(*self.INPUT_EMAIL_NULL)
+<<<<<<< HEAD
         return email_inputNull.text
     
     def pw_null(self):
         wrong_inputPW = self.driver.find_element(*self.INPUT_PW_NULL)
         return wrong_inputPW.text
+=======
+        return email_inputNull.get_attribute("validationMessage")
+    
+    def pw_null(self):
+        wrong_inputPW = self.driver.find_element(*self.INPUT_PW_NULL)
+        return wrong_inputPW.get_attribute("validationMessage")
+>>>>>>> 7a8736b6484c2b77961a8a897e29ecf99b2972aa
 
     

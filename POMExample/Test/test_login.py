@@ -38,7 +38,11 @@ class TestLogin():
         login_page.set_pw("123456789")
         login_page.button_signin_click()        
 
+<<<<<<< HEAD
         assert login_page.email_null() == ""
+=======
+        assert login_page.email_null() == "Please fill out this field"
+>>>>>>> 7a8736b6484c2b77961a8a897e29ecf99b2972aa
 
     def test_pw_null(self, browser: webdriver.Remote):
         login_page = LoginPage(browser)
@@ -47,7 +51,11 @@ class TestLogin():
         login_page.set_pw("")
         login_page.button_signin_click()        
 
+<<<<<<< HEAD
         assert login_page.pw_null() == ""
+=======
+        assert login_page.pw_null() == "Please fill out this field"
+>>>>>>> 7a8736b6484c2b77961a8a897e29ecf99b2972aa
     
     def test_emailpw_null(self, browser: webdriver.Remote):
         login_page = LoginPage(browser)
@@ -56,4 +64,8 @@ class TestLogin():
         login_page.set_pw("")
         login_page.button_signin_click()        
 
+<<<<<<< HEAD
         assert (login_page.email_null() and login_page.pw_null()) == ""
+=======
+        assert (login_page.email_null() and login_page.pw_null()) == "Please fill out this field"
+>>>>>>> 7a8736b6484c2b77961a8a897e29ecf99b2972aa
