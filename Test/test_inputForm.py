@@ -13,6 +13,14 @@ class Testform():
     PHONE_NUMBER = (By.ID, "userNumber")
     DOB_COL = (By.ID, "dateOfBirthInput")
     SUBJ = (By.ID, "subjectsInput")
+    CHECK_BOX1 = (By.ID, "hobbies-checkbox-1")
+    CHECK_BOX2 = (By.ID, "hobbies-checkbox-2")
+    CHECK_BOX3 = (By.ID, "hobbies-checkbox-3")
+    UPLOAD =(By.ID, "uploadPicture")
+    ADDRESS = (By.ID, "currentAddress")
+
+    path_directory = "C://Users/USER/Documents/Scanned Documents/img.png"
+    
     
     def setup_method(self):
         path = 'C:/Note/Scripts/chromedriver_win32 (1)/chromedriver.exe'
@@ -36,7 +44,6 @@ class Testform():
         
         #choose Gender
         choose_gender = self.driver.find_element(*self.CHOOSE_GENDER)
-        print(choose_gender.is_selected)
         choose_gender.click()
 
         #input Phone Number
@@ -55,7 +62,7 @@ class Testform():
         selected_to_month=Select(list_month)
         #choose month
         selected_to_month.select_by_visible_text("May")
-        time.sleep(5)
+        time.sleep(2)
 
         #select year
         choose_year = self.driver.find_element_by_css_selector(".react-datepicker__year-dropdown-container.react-datepicker__year-dropdown-container--select")
@@ -65,7 +72,7 @@ class Testform():
         selected_to_year=Select(list_year)
         #choose year
         selected_to_year.select_by_visible_text("1997")
-        time.sleep(5)
+        time.sleep(2)
 
         #select date
         select_date = self.driver.find_elements_by_css_selector(".react-datepicker__day")
@@ -78,7 +85,27 @@ class Testform():
         subs = self.driver.find_element(*self.SUBJ)
         subs.send_keys("aaa") 
 
-        #checklist Hobbies       
+        #checklist Hobbies     
+        self.driver.execute_script("window.scrollTo(0, 150)") 
+        time.sleep(3)  
+        check_box1 = self.driver.find_element(*self.CHECK_BOX1)
+        check_box2 = self.driver.find_element(*self.CHECK_BOX2)        
+        check_box3 = self.driver.find_element(*self.CHECK_BOX3)
 
+        self.driver.execute_script('arguments[0].click()', check_box1)
+        self.driver.execute_script('arguments[0].click()', check_box2)
+        self.driver.execute_script('arguments[0].click()', check_box3)        
+
+        #checklist Hobbies 
+        upload_img = self.driver.find_element(*self.UPLOAD)
+        upload_img.send_keys(self.path_directory)
+
+        #input Current Address
+        current_add = self.driver.find_element(*self.ADDRESS)
+        current_add.send_keys("jl. dfgtyuikjbvvb")
+
+
+
+        time.sleep(5)
 
 
