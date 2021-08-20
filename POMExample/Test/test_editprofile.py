@@ -23,3 +23,62 @@ class TestEditProfile():
         edit_profile_page.button_save_profile()
 
         assert edit_profile_page.succes_save() == "Profil Berhasil diperbaharui"
+    
+  def test_edit_data_check_valid(self, browser: webdriver.Remote):
+    edit_profile = TestEditProfile()
+    edit_profile_page = EditProfile(browser)
+    edit_profile.test_edit_profile_valid(browser)
+
+    try:
+        edit_profile_page.get_first_name()
+    finally: 
+        get_text = edit_profile_page.get_first_name()
+        print(get_text)
+        assert get_text == "Anggreini Intan Permata"
+
+    try:
+        edit_profile_page.get_last_name()
+    finally: 
+        get_text = edit_profile_page.get_last_name()
+        print(get_text)
+        assert get_text == "Sari"
+
+    try:
+        edit_profile_page.get_phone_numb()
+    finally: 
+        get_text = edit_profile_page.get_phone_numb()
+        print(get_text)
+        assert get_text == "08123456789"
+
+    try:
+        edit_profile_page.get_date_picker()
+    finally: 
+        get_text = edit_profile_page.get_date_picker()
+        print(get_text)
+        assert get_text == "2021-06-15"
+
+    try:
+        edit_profile_page.get_gender()
+    finally: 
+        get_text = edit_profile_page.get_gender()
+        print(get_text)
+        assert get_text == "Wanita"
+
+    try:
+        edit_profile_page.get_city()
+    finally: 
+        get_text = edit_profile_page.get_city()
+        print(get_text)
+        assert get_text == "Kab. Sleman"
+
+    try:
+        edit_profile_page.get_desc()
+    finally: 
+        get_text = edit_profile_page.get_desc()
+        print(get_text)
+        assert get_text == "BIO"
+
+  def test_change_photo_profile(self, browser: webdriver.Remote):
+    testdashboard_page = TestDashboard()
+    edit_profile_page = EditProfile(browser)
+    testdashboard_page.test_click_editprofile(browser)
