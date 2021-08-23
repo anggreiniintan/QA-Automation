@@ -1,8 +1,11 @@
 import time
 from selenium import webdriver
+from selenium.webdriver.common import keys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import select
 from selenium.webdriver.support.select import Select
+from selenium.webdriver.common.keys import Keys
+
 
 class Testform():
 
@@ -18,6 +21,12 @@ class Testform():
     CHECK_BOX3 = (By.ID, "hobbies-checkbox-3")
     UPLOAD =(By.ID, "uploadPicture")
     ADDRESS = (By.ID, "currentAddress")
+    STATE= (By.ID, "state")
+    INPUT_STATE = (By.ID, "react-select-3-input")
+    CITY = (By.ID, "city")
+    INPUT_CITY = (By.ID, "react-select-4-input")
+    BUTTON_SUBMIT = (By.CSS_SELECTOR, "#submit.btn.btn-primary")
+    TITTLE_TEXT = (By.ID, "example-modal-sizes-title-lg")
 
     path_directory = "C://Users/USER/Documents/Scanned Documents/img.png"
     
@@ -48,7 +57,7 @@ class Testform():
 
         #input Phone Number
         phone_number = self.driver.find_element(*self.PHONE_NUMBER)
-        phone_number.send_keys("09876543")
+        phone_number.send_keys("0987654987")
 
         #choose Date of Birth
         dob_col = self.driver.find_element(*self.DOB_COL)
@@ -83,7 +92,13 @@ class Testform():
         
         #input Subjects
         subs = self.driver.find_element(*self.SUBJ)
-        subs.send_keys("aaa") 
+        subs.send_keys("Math") 
+        subs.send_keys(Keys.DOWN)
+        subs.send_keys(Keys.ENTER)
+
+        subs.send_keys("Accounting") 
+        subs.send_keys(Keys.DOWN)
+        subs.send_keys(Keys.ENTER)
 
         #checklist Hobbies     
         self.driver.execute_script("window.scrollTo(0, 150)") 
@@ -96,7 +111,7 @@ class Testform():
         self.driver.execute_script('arguments[0].click()', check_box2)
         self.driver.execute_script('arguments[0].click()', check_box3)        
 
-        #checklist Hobbies 
+        #upload pict 
         upload_img = self.driver.find_element(*self.UPLOAD)
         upload_img.send_keys(self.path_directory)
 
@@ -104,8 +119,31 @@ class Testform():
         current_add = self.driver.find_element(*self.ADDRESS)
         current_add.send_keys("jl. dfgtyuikjbvvb")
 
+        #select state and city
+        #choose state
+        self.driver.execute_script("window.scrollTo(0, 350)") 
+        select_state = self.driver.find_element(*self.STATE)
+        select_state.click()
+        input_state = self.driver.find_element(*self.INPUT_STATE)       
+        input_state.send_keys("NCR")
+        input_state.send_keys(Keys.DOWN)
+        input_state.send_keys(Keys.ENTER)
 
+        #choose city
+        select_city = self.driver.find_element(*self.CITY)
+        select_city.click()
+        input_state.send_keys("Delhi")
+        input_state.send_keys(Keys.DOWN)
+        input_state.send_keys(Keys.ENTER)
+
+        #click button
+        button_submit = self.driver.find_element(*self.BUTTON_SUBMIT)
+        self.driver.execute_script('arguments[0].click()', button_submit)
 
         time.sleep(5)
 
+        #validation
+        tittle_text = self.driver.find_element(*self.TITTLE_TEXT)
+        time.sleep()
+        assert tittle_text.text == "Thanks for submitting the form"
 
