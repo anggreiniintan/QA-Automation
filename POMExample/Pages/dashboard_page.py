@@ -9,11 +9,8 @@ class DashboardPage():
     DROPDOWN_PROFILE_HEADER = (By.XPATH, "//*[@id='header']/div[1]/div/div/div[1]/ul/li[5]")
     DROPDOWN_MENU =(By.ID, "profile-menu")
     EDIT_PROFILE_MENU = (By.LINK_TEXT, "Edit Profile")
-<<<<<<< HEAD
-=======
     HEADER_NAVBAR = (By.CLASS_NAME, "header-navbar")
     NAVBAR_MENUS = (By.CSS_SELECTOR, ".header-navbar ul.navigation li a")
->>>>>>> 7a8736b6484c2b77961a8a897e29ecf99b2972aa
 
     def __init__(self, browser: webdriver.Remote):
         self.driver = browser
@@ -32,15 +29,13 @@ class DashboardPage():
         menu_dropdown = self.driver.find_element(*self.DROPDOWN_MENU)
         menu_dropdown_value = menu_dropdown.find_element(*self.EDIT_PROFILE_MENU)
         menu_dropdown_value.click()
-<<<<<<< HEAD
-=======
-
+        
     def navbar(self):
         # header_navbar = self.driver.find_element(*self.HEADER_NAVBAR)
         # navbar_menus = header_navbar.find_elements(*self.NAVBAR_MENUS)
         
         navbar_menus = self.driver.find_elements(*self.NAVBAR_MENUS)
         return navbar_menus
->>>>>>> 7a8736b6484c2b77961a8a897e29ecf99b2972aa
+
     
     
