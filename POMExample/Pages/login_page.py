@@ -19,7 +19,7 @@ class LoginPage():
         self.driver = browser
 
     def load_website(self):
-        self.driver.get("https://community.idntimes.com/login")
+        self.driver.get("")
 
     def set_email(self, email):
         email_field = self.driver.find_element(*self.EMAIL)
